@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Engineer Portfolio</title>
+    <!-- Fuente profesional estilo hacker/engineer -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Capa de Fondo (Apta para imagen de fondo) -->
+    <div class="bg-overlay"></div>
+
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo" onclick="navigateTo('home')">
+            <span class="logo-accent">🛡️</span> Erick Rojo
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" class="nav-link active" onclick="navigateTo('home')">Inicio</a></li>
+            <li><a href="#" class="nav-link" onclick="navigateTo('about')">Acerca de</a></li>
+            <li><a href="#" class="nav-link" onclick="navigateTo('labs')">Laboratorios</a></li>
+            <li><a href="#" class="nav-link" onclick="navigateTo('resources')">Recursos</a></li>
+            <li><a href="#" class="nav-link" onclick="navigateTo('projects')">Proyectos</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenedor Principal (Vistas Dinámicas) -->
+    <main class="content-container">
+
+        <!-- 1. PÁGINA PRINCIPAL -->
+        <section id="home" class="template active">
+            <div class="hero">
+                <p class="hero-prefix">[sys_admin@sec-node ~]$ ./init_profile.sh</p>
+                <h1 class="hero-title">Defensive Security Engineer 🛡️</h1>
+                <h2 class="hero-subtitle">Defensive Security | Threat Hunting | Infrastructure Hardening</h2>
+            </div>
+        </section>
+
+        <!-- 2. ACERCA DE -->
+        <section id="about" class="template">
+            <h2 class="section-title">/acerca_de</h2>
+            <div class="tabs-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="switchTab('tab-about')">Sobre mí</button>
+                    <button class="tab-btn" onclick="switchTab('tab-defensive')">Defensive Kit</button>
+                    <button class="tab-btn" onclick="switchTab('tab-certifications')">Certificaciones</button>
+                    <button class="tab-btn" onclick="switchTab('tab-experience')">Experiencia</button>
+                </div>
+                <div class="tab-content-wrapper">
+                    <!-- Tab 1 -->
+                    <div id="tab-about" class="tab-content active">
+                        <h3>Perfil Profesional</h3>
+                        <ul class="custom-list">
+                            <li>Especialista en seguridad defensiva y respuesta a incidentes (IR).</li>
+                            <li>Monitoreo continuo y análisis de registros con arquitecturas SIEM.</li>
+                            <li>Implementación de políticas Zero Trust y bastionado de sistemas (Hardening).</li>
+                            <li>Automatización de tareas de seguridad mediante Python y scripts Bash.</li>
+                        </ul>
+                    </div>
+                    <!-- Tab 2 -->
+                    <div id="tab-defensive" class="tab-content">
+                        <h3>Tech Stack & Herramientas</h3>
+                        <div class="tech-buttons">
+                            <span class="tech-btn">SIEM / Wazuh</span>
+                            <span class="tech-btn">Splunk</span>
+                            <span class="tech-btn">Wireshark</span>
+                            <span class="tech-btn">EDR / Defender</span>
+                            <span class="tech-btn">Docker Security</span>
+                            <span class="tech-btn">Suricata IDS</span>
+                            <span class="tech-btn">Python Security</span>
+                            <span class="tech-btn">Linux Hardening</span>
+                        </div>
+                    </div>
+                    <!-- Tab 3 -->
+                    <div id="tab-certifications" class="tab-content">
+                        <h3>Certificaciones</h3>
+                        <p>Sección disponible para incluir certificaciones obtenidas (ej. BJA, CompTIA Security+, SecOps, ejPT, etc.).</p>
+                    </div>
+                    <!-- Tab 4 -->
+                    <div id="tab-experience" class="tab-content">
+                        <h3>Trayectoria</h3>
+                        <p>Sección preparada para resumir tu trayectoria laboral o proyectos relevantes de la industria.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LABORATORIOS -->
+        <section id="labs" class="template">
+            <h2 class="section-title">/laboratorios</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/222222/4285f4?text=LAB+01" alt="Lab 1" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Detecting Malware Behaviors</h3>
+                        <p class="card-desc">Simulación de infección por Ransomware y análisis en tiempo real del tráfico C2 con Wireshark y logs Sysmon.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/222222/4285f4?text=LAB+02" alt="Lab 2" class="card-body">
+                    <div class="card-body">
+                        <h3 class="card-title">Active Directory Hardening</h3>
+                        <p class="card-desc">Implementación de GPOs de seguridad, restricciones Kerberos y mitigación de ataques Kerberoasting en laboratorio controlado.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/222222/4285f4?text=LAB+03" alt="Lab 3" class="card-body">
+                    <div class="card-body">
+                        <h3 class="card-title">SIEM Rule Tuning (Wazuh)</h3>
+                        <p class="card-desc">Creación e integración de reglas decodificadoras personalizadas para alertas de fuerza bruta en servidores SSH y web.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. RECURSOS -->
+        <section id="resources" class="template">
+            <h2 class="section-title">/recursos</h2>
+            <div class="search-box">
+                <input type="text" id="searchInput" onkeyup="filterTable()" placeholder="Buscar recurso por nombre, url o dominio...">
+            </div>
+            <div class="table-wrapper">
+                <table id="resourcesTable">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>URL</th>
+                            <th>Descripción</th>
+                            <th>Dominio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MITRE ATT&CK Matrix</td>
+                            <td><a href="https://attack.mitre.org" target="_blank" class="table-link">https://attack.mitre.org</a></td>
+                            <td>Base de conocimientos global de tácticas y técnicas de adversarios.</td>
+                            <td><span class="domain-tag">Threat Intel</span></td>
+                        </tr>
+                        <tr>
+                            <td>CyberChef</td>
+                            <td><a href="https://gchq.github.io/CyberChef" target="_blank" class="table-link">https://cyberchef.io</a></td>
+                            <td>Navaja suiza web para de/codificación, cifrado y análisis de datos.</td>
+                            <td><span class="domain-tag">DFIR</span></td>
+                        </tr>
+                        <tr>
+                            <td>OWASP Top 10</td>
+                            <td><a href="https://owasp.org" target="_blank" class="table-link">https://owasp.org</a></td>
+                            <td>Estándar de concientización sobre las principales vulnerabilidades en aplicaciones web.</td>
+                            <td><span class="domain-tag">AppSec</span></td>
+                        </tr>
+                        <tr>
+                            <td>Atomic Red Team</td>
+                            <td><a href="https://atomicredteam.io" target="_blank" class="table-link">https://atomicredteam.io</a></td>
+                            <td>Pruebas de seguridad simples y automatizadas mapeadas a MITRE ATT&CK.</td>
+                            <td><span class="domain-tag-pt">Purple Team</span></td>
+                        </tr>
+                        <tr>
+                            <td>Have I Been Pwned?</td>
+                            <td><a href="https://haveibeenpwned.com/" target="_blank" class="table-link">https://haveibeenpwned.com/</a></td>
+                            <td>Esta herramienta permite verificar si tu password ha sido comprometida.</td>
+                            <td><span class="domain-tag">Threat Intelligence</span></td>
+                        </tr>
+                        <tr>
+                            <td>Have I Been Pwned?</td>
+                            <td><a href="https://haveibeenpwned.com/" target="_blank" class="table-link">https://haveibeenpwned.com/</a></td>
+                            <td>Esta herramienta permite verificar si tu password ha sido comprometida.</td>
+                            <td><span class="domain-tag">Threat Intelligence</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. PROYECTOS -->
+        <section id="projects" class="template">
+            <h2 class="section-title">/proyectos</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/1e1e1e/4285f4?text=PROJECT+01" alt="Proyecto 1" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Auto-SOC Parser</h3>
+                        <span class="domain-tag">Automation</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/1e1e1e/4285f4?text=PROJECT+02" alt="Proyecto 2" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">HoneyPot Network Deployment</h3>
+                        <span class="domain-tag">Deception Sec</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/400x200/1e1e1e/4285f4?text=PROJECT+03" alt="Proyecto 3" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">Cloud Infrastructure Audit Tool</h3>
+                        <span class="domain-tag">Cloud Security</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
