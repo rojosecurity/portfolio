@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto: Security Operations Center Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./project-style.css">
+</head>
+<body>
+
+    <article class="project-container">
+        <!-- Header del Proyecto -->
+        <header class="project-header">
+            <span class="project-badge">BLUE TEAM / HARDENING</span>
+            <h1 class="project-title">Implementación de SOC Doméstico con Wazuh & Suricata</h1>
+            <p class="project-desc">Despliegue de un entorno de monitoreo centralizado para análisis de amenazas en tiempo real y detección de intrusiones en red.</p>
+        </header>
+
+        <hr class="project-divider">
+
+        <!-- Galería de Imágenes (Click para ampliar) -->
+        <section class="gallery-section">
+            <h2>/galeria_de_evidencias</h2>
+            <div class="gallery-grid">
+                
+                <div class="gallery-item" onclick="openModal(this)">
+                    <img src="https://via.placeholder.com/800x450/1e1e1e/4285f4?text=Dashboard+Wazuh+SIEM" alt="Dashboard Principal Wazuh">
+                    <div class="overlay">
+                        <span>🔍 Ampliar Imagen</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(this)">
+                    <img src="https://via.placeholder.com/800x450/1e1e1e/4285f4?text=Reglas+Suricata+IDS" alt="Alertas de Suricata IDS">
+                    <div class="overlay">
+                        <span>🔍 Ampliar Imagen</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(this)">
+                    <img src="https://via.placeholder.com/800x450/1e1e1e/4285f4?text=Arquitectura+de+Red" alt="Diagrama de Arquitectura de Red">
+                    <div class="overlay">
+                        <span>🔍 Ampliar Imagen</span>
+                    </div>
+                </div>
+
+                <div class="gallery-item" onclick="openModal(this)">
+                    <img src="https://via.placeholder.com/800x450/1e1e1e/4285f4?text=Analisis+de+Logs+Sysmon" alt="Logs de Eventos Windows Sysmon">
+                    <div class="overlay">
+                        <span>🔍 Ampliar Imagen</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Detalle Técnico del Proyecto -->
+        <section class="project-details">
+            <h2>/detalles_tecnicos</h2>
+            <ul>
+                <li><strong>Arquitectura:</strong> Docker Compose con contenedores aislados para Wazuh Indexer, Manager y Dashboard.</li>
+                <li><strong>Monitoreo de Red:</strong> NDS/IDS configurado en modo promiscuo con Suricata inspeccionando interfaz `eth0`.</li>
+                <li><strong>Endpoints:</strong> Agentes instalados en Windows Server 2022 y Ubuntu Server con Sysmon activo.</li>
+            </ul>
+        </section>
+    </article>
+
+    <!-- VENTANA MODAL (Oculta por defecto) -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-btn">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="modalCaption"></div>
+    </div>
+
+    <script src="./project-script.js"></script>
+</body>
+</html>
