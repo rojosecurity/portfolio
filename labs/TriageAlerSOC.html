@@ -1,12 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab.Triage Alert SOC</title>
-    <link rel="stylesheet" href="../styles.css">
+    <title>Post: Lab. Triage Alert SOC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./post-style.css">
 </head>
 <body>
-    
+
+    <article class="post-container">
+        <!-- Encabezado del Post -->
+        <header class="post-header">
+            <div class="post-meta">
+                <span class="post-date">📅 15 AGOSTO, 2026</span>
+                <span class="post-category">DFIR / BLUE TEAM</span>
+            </div>
+            <h1 class="post-title">Explicando como funciona el Triage Alert SOC</h1>
+            <p class="post-subtitle"></p>
+            <div class="post-tags">
+                <span class="tag">#SOC</span>
+                <span class="tag">#BlueTeam</span>
+                
+            </div>
+        </header>
+
+        <hr class="post-divider">
+
+        <!-- Contenido Principal -->
+        <section class="post-content">
+            <h2>1. Qué es lo que debes saber antes de</h2>
+            <p>
+                <span> <b>Evento</b>: Un evento es cualquier acción que sucede en tu red, por ejemplo: Un inicio de sesión, un ping, Autenticación de Windows </span>
+                <span> <b>Alerta</b>: Una alerta es una notificación que se genera cuando se detecta un evento sospechoso o potencialmente malicioso. </span>
+            </p>
+
+            <blockquote class="callout warning">
+                <strong>Nota de Seguridad:</strong> Siempre monitorea las elevaciones de privilegios no autorizadas en cuentas de servicio con permisos de <code>Domain Admin</code>.
+            </blockquote>
+
+            <h2>2. Eventos clave a monitorear</h2>
+            <p>
+                Para identificar estas actividades en Windows, los registros de auditoría de seguridad son fundamentales. A continuación se presentan los Event IDs prioritarios:
+            </p>
+
+            <ul>
+                <li><strong>Event ID 4624:</strong> Inicio de sesión exitoso (Prestar atención a logon type 3 y 10).</li>
+                <li><strong>Event ID 4625:</strong> Fallo en el inicio de sesión (Indicador de fuerza bruta o Password Spraying).</li>
+                <li><strong>Event ID 4768:</strong> Solicitud de Ticket Granting Ticket (TGT) en Kerberos.</li>
+            </ul>
+
+            <h2>3. Regla de Detección (Ejemplo de Configuración)</h2>
+            <p>
+                A continuación se muestra un fragmento de regla XML personalizable para entornos SIEM (como Wazuh) enfocada en detectar múltiples fallos de autenticación:
+            </p>
+
+<!-- Bloque de Código -->
+<pre><code>&lt;rule id="100050" level="10"&gt;
+  &lt;if_sid&gt;18100&lt;/if_sid&gt;
+  &lt;field name="win.system.eventID"&gt;^4625$&lt;/field&gt;
+  &lt;description&gt;Posible ataque de Password Spraying detectado&lt;/description&gt;
+  &lt;mitre&gt;
+    &lt;id&gt;T1110.003&lt;/id&gt;
+  &lt;/mitre&gt;
+&lt;/rule&gt;</code></pre>
+
+            <h2>4. Medidas de Mitigación (Hardening)</h2>
+            <p>
+                Para prevenir la explotación efectiva de estas vulnerabilidades tácticas, se recomienda implementar las siguientes directivas de grupo (GPO):
+            </p>
+
+            <ol>
+                <li>Habilitar <strong>Credential Guard</strong> en Windows 10/11 y Windows Server.</li>
+                <li>Restringir el uso de protocolo NTLM mediante políticas de restricción de autenticación.</li>
+                <li>Configurar arquitectura LAPS (Local Administrator Password Solution) para rotar claves locales.</li>
+            </ol>
+
+            <blockquote class="callout info">
+                <strong>Recurso adicional:</strong> Puedes consultar la matriz <a href="https://attack.mitre.org" target="_blank">MITRE ATT&CK T1110</a> para profundizar en las técnicas de acceso a credenciales.
+            </blockquote>
+        </section>
+
+        <!-- Pie de página del Post -->
+        <footer class="post-footer">
+            <div class="author-box">
+                <div class="author-avatar">&gt;_</div>
+                <div class="author-info">
+                    <h3>Redactado por Security Engineer</h3>
+                    <p>Especialista en Seguridad Defensiva, Threat Hunting y Bastionado de Infraestructura.</p>
+                </div>
+            </div>
+        </footer>
+    </article>
+
 </body>
 </html>
